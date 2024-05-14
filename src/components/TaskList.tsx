@@ -1,32 +1,63 @@
-import { View, Text, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TextInput,
+  Button,
+  StyleSheet,
+} from "react-native";
 import TaskListItem from "./TaskListItem";
 import { useState } from "react";
 
 export default function TaskList() {
-  const [tasks, setTask] = useState([]);
+  const [tasks, setTask] = useState([
+    { description: "First Task" },
+    { description: "Second Task" },
+  ]);
+  const [newTask, setNewTask] = useState("");
+  const createTask = () => {
+    console.log("Creating Task", newTask);
+    setTask([...tasks, { description: newTask }]);
+    setNewTask("");
+  };
   return (
-    <View style={{ backgroundColor: "#101112", padding: 10, borderRadius: 5 }}>
-      <Text
-        style={{
-          color: "white",
-          fontWeight: "bold",
-          fontSize: 20,
-          marginVertical: 10,
-        }}
-      >
-        Todo
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Todo</Text>
       {/* the list of tasks */}
       <FlatList
         contentContainerStyle={{ gap: 5 }}
         data={tasks}
-        renderItem={({ item }) => {
-          <TaskListItem task={item} />;
-        }}
+        renderItem={({ item }) => <TaskListItem task={item} />}
       />
-      <TaskListItem task={{ description: "First Task" }} />
-      <TaskListItem task={{ description: "Second Task" }} />
-      <TaskListItem task={{ description: "Third Task" }} />
+      {/* New Task Input */}
+      <TextInput
+        value={newTask}
+        onChangeText={setNewTask}
+        placeholder="New Task"
+        placeholderTextColor={"gray"}
+        style={styles.input}
+      />
+      <Button title="Add Task" onPress={createTask} />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#101112",
+    padding: 10,
+    borderRadius: 5,
+    gap: 5,
+  },
+  title: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+    marginVertical: 10,
+  },
+  input: {
+    color: "white",
+    padding: 15,
+    backgroundColor: "#1D2125",
+    borderRadius: 5,
+  },
+});
