@@ -44,7 +44,7 @@ export default function TaskList() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#101112",
-    padding: 10,
+    padding: 15,
     borderRadius: 5,
     gap: 5,
   },
