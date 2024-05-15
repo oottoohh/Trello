@@ -15,6 +15,7 @@ export default function TaskList() {
   const realm = useRealm();
   const tasks = useQuery(Task);
   const [newTask, setNewTask] = useState("");
+
   const createTask = () => {
     realm.write(() => {
       realm.create(Task, { description: newTask, user_id: "123" });
