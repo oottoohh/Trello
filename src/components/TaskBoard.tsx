@@ -7,7 +7,7 @@ export default function TaskBoard() {
     <View style={{ padding: 10, flex: 1 }}>
       <LinearGradient
         // Background Linear Gradient
-        colors={["#F0E68C", "#FFFFFF"]}
+        colors={["#F9D423", "#FFFFFF"]}
         style={StyleSheet.absoluteFill}
       />
       <SafeAreaView>
