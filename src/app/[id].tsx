@@ -22,7 +22,7 @@ const TaskDetails = () => {
   };
 
   if (!task) {
-    return <Text>Data Not Found</Text>;
+    return <Text>{"Data Not Found"}</Text>;
   }
   return (
     <View style={{ padding: 10 }}>
