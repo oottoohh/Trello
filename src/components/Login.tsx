@@ -1,5 +1,4 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { View, Text, Button } from "react-native";
 import { useAuth } from "@realm/react";
 
 const Login = () => {
@@ -9,7 +8,8 @@ const Login = () => {
   };
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text onPress={guestLogin}>{"Continue as guest"}</Text>
+      <Text>{"Continue as guest"}</Text>
+      <Button onPress={guestLogin} title="LoggedIn" />
     </View>
   );
 };
